@@ -2,7 +2,9 @@ import Image from "next/image";
 
 export default async function Home() {
 
-  const data = await fetch('https://bible-api.com/data/web/random')
+  const data = await fetch('https://bible-api.com/data/web/random', {
+    cache: 'no-store'
+  })
   const random = await data.json()
 
   return (
