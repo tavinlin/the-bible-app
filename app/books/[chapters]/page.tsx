@@ -13,7 +13,7 @@ export default async function Page({
 
     return (
         <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-100 tracking-tight mb-6">Chapters of {res.chapters[0].book}</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-100 tracking-tight mb-6">Book of {res.chapters[0].book}</h1>
             <ul className="text-slate-100">
                 {res.chapters.map((chapter) => (
                     // It is required to add a key to the <li> element
@@ -22,7 +22,7 @@ export default async function Page({
                             href={'/books/' + chapter.book_id + '/' + chapter.chapter} 
                             className="inline-flex items-center justify-center w-full py-5 border border-indigo-500 text-base font-medium rounded-md text-slate-200 bg-transparent hover:bg-indigo-500/10 transition-colors duration-200 mb-6"
                         >
-                            {chapter.chapter}
+                            Chapter {chapter.chapter}
                         </Link>
                     </li>
                 ))}

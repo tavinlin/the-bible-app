@@ -29,6 +29,14 @@ interface Chapter{
     url: string;
 }
 
+interface Verse{
+    book_id: string;
+    book: string;
+    chapter: number;
+    verse: number;
+    text: string;
+}
+
 interface Translation{
     identifier: string;
     name: string;
@@ -43,8 +51,13 @@ interface Bible{
 }
 
 interface Chapters{
-    translatioin: Translation;
+    translation: Translation;
     chapters: Chapter[];
+}
+
+interface Verses{
+    translation: Translation;
+    verses: Verse[];
 }
 
 export async function getRandomVerse(): Promise<RandomVerse>{
@@ -61,8 +74,16 @@ export async function getListOfBooks(): Promise<Bible>{
     return res.json();
 }
 
-export async function getListofChapters(chapterId: string): Promise<Chapters>{
-    const res = await fetch('https://bible-api.com/data/web/' + chapterId);
+export async function getListofChapters(bookId: string): Promise<Chapters>{
+    const res = await fetch('https://bible-api.com/data/web/' + bookId);
+
+    if(!res.ok) throw new Error('There is no such book!');
+
+    return res.json();
+}
+
+export async function getListofVerses(bookId: string, chapterId: string): Promise<Verses>{
+    const res = await fetch('https://bible-api.com/data/web/' + bookId + '/' + chapterId);
 
     if(!res.ok) throw new Error('There is no such chapter!');
 

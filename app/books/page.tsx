@@ -8,7 +8,7 @@ export default async function Page() {
 
     return (
         <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-100 tracking-tight mb-6">Books in English</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-100 tracking-tight mb-6">{res.translation.name}</h1>
             <ul className="text-slate-100">
                 {res.books.map((book) => (
                     // It is required to add a key to the <li> element

@@ -18,7 +18,7 @@ export default async function Home() {
                 {res.random_verse.text}
             </p>
             <a href="/books" className="inline-flex items-center justify-center px-6 py-3 border border-indigo-500 text-base font-medium rounded-md text-indigo-400 bg-transparent hover:bg-indigo-500/10 transition-colors duration-200">
-                Books in English
+                World English Bible
             </a>
     </div>
   );
