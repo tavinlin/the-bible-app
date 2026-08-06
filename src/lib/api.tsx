@@ -1,4 +1,3 @@
-
 interface RandomVerse{
     translation: {
         identifier: string;
@@ -14,6 +13,12 @@ interface RandomVerse{
         verse: number;
         text: string;
     }
+}
+
+interface Search{
+    reference: string;
+    text: string;
+    error: string;
 }
 
 interface Books{
@@ -71,6 +76,8 @@ export async function getRandomVerse(): Promise<RandomVerse>{
 export async function getListOfBooks(): Promise<Bible>{
     const res = await fetch('https://bible-api.com/data/web');
 
+    if(!res.ok) throw new Error('Nothing found.');
+
     return res.json();
 }
 
@@ -86,6 +93,12 @@ export async function getListofVerses(bookId: string, chapterId: string): Promis
     const res = await fetch('https://bible-api.com/data/web/' + bookId + '/' + chapterId);
 
     if(!res.ok) throw new Error('There is no such chapter!');
+
+    return res.json();
+}
+
+export async function getSearchResult(query: string): Promise<Search>{
+    const res = await fetch('https://bible-api.com/' + query)
 
     return res.json();
 }
