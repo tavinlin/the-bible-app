@@ -12,7 +12,7 @@ export default async function Page({
     const res = await getListofChapters(chapters);
 
     return (
-        <div className="text-center">
+        <div className="">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-100 tracking-tight mb-6">Book of {res.chapters[0].book}</h1>
             <ul className="text-slate-100">
                 {res.chapters.map((chapter) => (
